@@ -1,0 +1,40 @@
+schema_version: business-agent/v0
+id: replace-with-agent-id
+name: Replace With Agent Name
+agent_shape: composite_business_agent
+mission: Describe the business outcome this agent must help achieve.
+business_value: Describe the measurable value this agent should create.
+owner: project
+non_goals:
+  - Describe work this agent must not do.
+allowed_actions:
+  - action_id: inspect_source
+    risk_class: low
+    approval: not_required
+risk_classes:
+  - id: low
+    meaning: Local or reversible work.
+  - id: external
+    meaning: Work that affects external systems, users, money, publication, or deletion.
+human_gates:
+  - id: gate_external_action
+    applies_to_risk_class: external
+    decision: approve | reject | edit | defer
+runtime_targets:
+  - runtime: codex
+    adapter: runtime-adapters/codex.yaml
+memory_policy:
+  business_memory_path: memory/business-memory.yaml
+  feedback_path: memory/feedback-log.yaml
+  promotion_requires_human_approval: true
+eval_policy:
+  scenario_path: evals/smoke_scenario.yaml
+  blocking_failure_policy: stop_and_repair
+delivery_contract:
+  report_template: reports/delivery-package.md
+  must_include:
+    - result
+    - evidence
+    - risks
+    - human_gates
+    - next_action

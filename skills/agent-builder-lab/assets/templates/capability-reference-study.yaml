@@ -1,0 +1,81 @@
+schema_version: capability-reference-study/v0
+capability:
+  name: replace-with-capability-name
+  question: What agent capability are we trying to improve?
+  hypothesis: What do we expect to learn or change?
+  local_target:
+    - reference
+    - schema
+    - template
+    - checker
+    - eval
+    - memory-rule
+    - project-only
+references:
+  - name: replace-with-reference-system
+    source: https://example.com/official-doc
+    source_type: official-doc
+    why_selected: Why this system is a useful reference.
+    observed_process:
+      - trigger: What starts the process?
+        action: What does the system do?
+        decision: What choice is made?
+        stop_condition: When does the process stop?
+    output_objects:
+      - name: replace-with-output-object
+        purpose: What problem does this object solve?
+        owner: runtime | project | user | agent | external-system
+        fields:
+          - name: id
+            meaning: Stable identifier.
+        lifecycle:
+          created: When is it created?
+          updated: When is it updated?
+          retrieved: When is it retrieved?
+          archived: When is it archived or forgotten?
+        quality_signal: How do we know this object is useful?
+        portability_note: What changes if we switch runtime?
+    useful_patterns:
+      - pattern: What pattern is worth borrowing?
+        evidence: What source or trial supports it?
+        reusable_scope: project | agent-builder-lab | runtime | eval-template | vibeflow | reference-only
+    rejected_patterns:
+      - pattern: What should we not copy?
+        reason: Why not?
+invariants:
+  - invariant: Stable similarity across references.
+    evidence:
+      - reference-system-name
+    local_contract: How this becomes our schema/template/checker/eval/rule.
+field_evolution:
+  observed_fields:
+    - name: replace-with-observed-field
+      purpose: What judgment gap does this field expose?
+      source: Which reference or trial showed the need?
+      owner: runtime | project | user | agent | external-system | study-only
+      expected_consumer: Who will read or act on this field?
+      keep_if: What evidence would make this field useful beyond this study?
+  candidate_fields:
+    - name: replace-with-candidate-field
+      maturity: candidate
+      evidence:
+        - reference-system-name
+      proposed_sink: study-only | template | schema | checker | eval | project-only
+      approval_level: auto | propose | approval
+      migration_note: What changes if this becomes stable?
+field_trial:
+  project: replace-with-project-name
+  trial_task: What real low-risk business task will test this?
+  success_signals:
+    - What must happen?
+  failure_signals:
+    - What would show the idea does not work?
+  evidence_to_collect:
+    - artifact
+    - delivery-package
+    - run-log
+    - human-feedback
+promotion_decision:
+  status: watch | promote | project-only | reference-only | reject
+  target: project | agent-builder-lab | runtime | eval-template | vibeflow | none
+  reason: Why this target is correct.

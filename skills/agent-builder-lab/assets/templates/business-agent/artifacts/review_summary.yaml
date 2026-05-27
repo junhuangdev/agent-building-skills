@@ -1,0 +1,24 @@
+schema_version: business-agent-artifact/v0
+id: review_summary
+type: human_review_report
+owner: replace-with-agent-id
+schema:
+  required:
+    - summary
+    - evidence
+    - risks
+    - next_action
+evidence_required:
+  - source
+  - action_taken
+  - verification_result
+status_values:
+  - draft
+  - verified
+  - rejected
+  - superseded
+human_summary_fields:
+  - result
+  - evidence
+  - risk
+  - next_action

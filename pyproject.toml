@@ -1,0 +1,7 @@
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
+testpaths = [
+  "skills/agent-builder-lab/tests",
+  "skills/agent-scaffold-skill/tests",
+]
+

@@ -1,0 +1,8 @@
+interface:
+  display_name: "Agent Scaffold"
+  short_description: "Create multi-provider agent project scaffolds"
+  brand_color: "#2563EB"
+  default_prompt: "Use $agent-scaffold-skill to design a lightweight multi-provider AI agent scaffold for my project."
+
+policy:
+  allow_implicit_invocation: true

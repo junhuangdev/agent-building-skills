@@ -1,0 +1,8 @@
+cases:
+  - id: hello
+    input: "Say hello in one short sentence."
+    expected_contains:
+      - "hello"
+    providers:
+      - deepseek
+      - openai

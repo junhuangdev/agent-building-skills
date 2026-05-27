@@ -1,0 +1,8 @@
+schema_version: business-agent-feedback/v0
+entries:
+  - id: feedback_001
+    date: 2026-05-27
+    run_id: replace-with-run-id
+    signal: Replace with human feedback or observed failure.
+    impact: Describe what the feedback changes.
+    disposition: memory | eval | action | artifact | archive

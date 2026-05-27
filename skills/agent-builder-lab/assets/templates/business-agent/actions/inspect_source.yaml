@@ -1,0 +1,25 @@
+schema_version: business-agent-action/v0
+id: inspect_source
+description: Inspect a source or project state and produce evidence for a business decision.
+input_contract:
+  required:
+    - goal
+    - source
+  optional:
+    - constraints
+output_contract:
+  required:
+    - finding
+    - evidence
+    - confidence
+risk_class: low
+requires_approval: false
+side_effects:
+  - none
+forbidden_when:
+  - source_is_missing
+  - source_requires_credentials_not_available_to_runtime
+produces_artifacts:
+  - review_summary
+verification:
+  command: python ~/.codex/skills/agent-builder-lab/scripts/check_business_agent_package.py .

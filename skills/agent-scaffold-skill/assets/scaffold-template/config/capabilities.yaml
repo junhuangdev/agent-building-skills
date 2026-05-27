@@ -1,0 +1,44 @@
+providers:
+  deepseek:
+    tool_calling: true
+    parallel_tool_calls: false
+    json_object: true
+    json_schema: experimental
+    streaming: true
+    reasoning: model_dependent
+    vision: false
+    hosted_web_search: false
+    hosted_file_search: false
+
+  openai:
+    tool_calling: true
+    parallel_tool_calls: true
+    json_object: true
+    json_schema: true
+    streaming: true
+    reasoning: model_dependent
+    vision: model_dependent
+    hosted_web_search: model_dependent
+    hosted_file_search: model_dependent
+
+  gemini:
+    tool_calling: experimental
+    parallel_tool_calls: unknown
+    json_object: true
+    json_schema: experimental
+    streaming: true
+    reasoning: model_dependent
+    vision: model_dependent
+    hosted_web_search: false
+    hosted_file_search: false
+
+  openrouter:
+    tool_calling: model_dependent
+    parallel_tool_calls: model_dependent
+    json_object: model_dependent
+    json_schema: model_dependent
+    streaming: true
+    reasoning: model_dependent
+    vision: model_dependent
+    hosted_web_search: false
+    hosted_file_search: false

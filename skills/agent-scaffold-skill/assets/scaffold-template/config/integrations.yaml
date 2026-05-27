@@ -1,0 +1,161 @@
+integrations:
+  model_client:
+    kind: adapter
+    package: openai
+    enabled: true
+    boundary: provider
+    risk: money
+    capabilities:
+      - chat_completion
+      - streaming
+      - tool_call_protocol
+      - structured_output_protocol
+    recommended_for:
+      - deepseek-basic
+      - kimi-basic
+      - multi-provider
+    alternatives:
+      - anthropic
+      - dashscope
+      - google-genai
+      - provider-native-http
+    scaffold_ownership:
+      - provider_adapter
+      - capability_matrix
+      - retry_policy
+      - usage_accounting
+    config:
+      adapter: openai_compatible
+    evals:
+      - provider-smoke
+      - provider-switch-smoke
+
+  agent_runtime:
+    kind: framework
+    package: thin-runtime
+    enabled: true
+    boundary: orchestration
+    risk: low
+    capabilities:
+      - agent_loop
+      - tool_rounds
+      - stop_conditions
+      - error_recovery
+    recommended_for:
+      - deepseek-basic
+      - kimi-basic
+      - multi-provider
+      - rag-agent
+    alternatives:
+      - langgraph
+      - pydantic-ai
+      - openai-agents-sdk
+      - qwen-agent
+    scaffold_ownership:
+      - agent_loop
+      - provider_independence
+      - approval_boundary
+      - eval_contract
+    config:
+      max_tool_rounds: 4
+    evals:
+      - agent-loop-smoke
+      - tool-execution-smoke
+
+  tool_schema:
+    kind: local
+    package: pydantic
+    enabled: true
+    boundary: tools
+    risk: low
+    capabilities:
+      - input_validation
+      - json_schema
+      - typed_tool_contract
+    recommended_for:
+      - deepseek-basic
+      - multi-provider
+      - rag-agent
+    alternatives:
+      - zod
+      - msgspec
+      - raw-json-schema
+    scaffold_ownership:
+      - tool_registry
+      - approval_metadata
+      - error_shape
+    config: {}
+    evals:
+      - tool-schema-contract
+
+  retrieval:
+    kind: adapter
+    package: llama-index
+    enabled: false
+    boundary: retrieval
+    risk: low
+    capabilities:
+      - document_loader
+      - vector_search
+    recommended_for:
+      - rag-agent
+    alternatives:
+      - langchain
+      - haystack
+      - custom-retrieval
+    scaffold_ownership:
+      - data_boundary
+      - citation_format
+      - retrieval_eval
+    config: {}
+    evals:
+      - retrieval-smoke
+
+  web_research:
+    kind: service
+    package: provider-or-search-api
+    enabled: false
+    boundary: web
+    risk: external
+    capabilities:
+      - web_search
+      - page_fetch
+    recommended_for:
+      - research-agent
+      - rag-agent
+    alternatives:
+      - tavily
+      - brave-search
+      - playwright
+      - browser-mcp
+    scaffold_ownership:
+      - source_logging
+      - external_action_policy
+      - rate_limit_policy
+    config: {}
+    evals:
+      - web-research-smoke
+
+  workflow:
+    kind: framework
+    package: langgraph
+    enabled: false
+    boundary: orchestration
+    risk: low
+    capabilities:
+      - state_graph
+      - retries
+    recommended_for:
+      - workflow-agent
+      - multi-agent
+    alternatives:
+      - pydantic-ai
+      - temporal
+      - custom-state-machine
+    scaffold_ownership:
+      - workflow_boundary
+      - state_contract
+      - approval_checkpoints
+    config: {}
+    evals:
+      - workflow-smoke

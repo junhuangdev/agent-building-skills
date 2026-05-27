@@ -1,0 +1,17 @@
+schema_version: business-agent-runtime-adapter/v0
+runtime: codex
+invocation: Use Codex with project AGENTS.md and the agent-builder-lab skill.
+skill_trigger: agent-builder-lab
+capability_map:
+  reads_project_files: supported
+  edits_project_files: supported_with_user_scope
+  runs_local_commands: supported
+  full_internal_trace: unavailable
+  external_collaboration_trace: supported
+unsupported_actions:
+  - Do not rely on full hidden model trace.
+  - Do not assume persistent runtime memory without project-owned memory files.
+handoff_rules:
+  - Business state must be stored in project artifacts, not only in chat.
+  - Risky or external actions must stop at a human gate.
+  - Delivery must cite artifacts, evidence, risks, and next action.

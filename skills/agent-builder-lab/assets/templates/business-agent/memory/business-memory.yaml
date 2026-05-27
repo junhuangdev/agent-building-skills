@@ -1,0 +1,15 @@
+schema_version: business-agent-memory/v0
+agent_id: replace-with-agent-id
+stable_profile:
+  mission: Describe durable business purpose.
+  user_preferences: []
+decisions:
+  - id: decision_001
+    date: 2026-05-27
+    decision: Replace with a durable business decision.
+    evidence: Replace with evidence path or note.
+    status: active
+feedback_rules:
+  - id: feedback_rule_001
+    trigger: User rejects an output for a repeatable reason.
+    action: Turn the reason into a rubric, eval scenario, memory entry, or archived note.

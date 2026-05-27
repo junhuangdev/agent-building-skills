@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Builder Lab"
+  short_description: "Learn how to build better agents"
+  default_prompt: "Use $agent-builder-lab to guide a real agent-building session and capture reusable lessons."
