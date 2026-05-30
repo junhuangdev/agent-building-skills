@@ -1,0 +1,23 @@
+id: memory_20260528_business_evidence_threshold
+evolution_target: agent_business
+storage_sink: owning_agent_repo
+scope: project
+status: active
+source: user_feedback
+context: User rejected a business recommendation because evidence was weak.
+content: Business recommendations need explicit source evidence before being presented as high confidence.
+future_use: When producing recommendations for this project.
+use_history:
+  - applied_artifact: memory_20260528_business_evidence_threshold
+    task_context: Business recommendation review.
+    use_result: partial
+    evidence: User said the structure was useful but evidence remained weak.
+    follow_up: revise
+last_use_result: partial
+evidence:
+  - User feedback marked weak evidence as the rejection reason.
+counterexamples:
+  - Brainstorming drafts may list low-confidence ideas if clearly labeled.
+risk: Presenting weak recommendations as reliable business output.
+last_confirmed: 2026-05-28
+review_trigger: user_feedback

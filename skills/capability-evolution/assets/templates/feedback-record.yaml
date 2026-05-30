@@ -1,0 +1,14 @@
+id: feedback_YYYYMMDD_short_slug
+source_task: Short task identifier or description.
+result_useful: partial # yes | no | partial
+reason: weak_evidence # direction_wrong | weak_evidence | too_verbose | not_specific | risk_unacceptable | other
+durable_preference: only_this_project # yes | no | only_this_project
+notes: Short human-readable explanation.
+evolution_action:
+  memory: watch
+  eval_case: create
+  promotion: none
+use_feedback:
+  applied_artifact: Optional learned artifact that affected the task.
+  use_result: partial # helped | partial | misled | stale | not_applicable | not_used
+  follow_up: revise # confirm | narrow | revise | supersede | archive | reject | promote | none

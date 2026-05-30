@@ -1,0 +1,4 @@
+interface:
+  display_name: "Capability Evolution"
+  short_description: "Use-backed AI capability improvement"
+  default_prompt: "Use $capability-evolution to decide what this task should learn, use, evaluate, improve, archive, or promote."

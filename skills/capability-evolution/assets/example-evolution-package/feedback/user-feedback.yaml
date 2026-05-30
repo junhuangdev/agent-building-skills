@@ -1,0 +1,14 @@
+id: feedback_20260528_weak_evidence
+source_task: Business recommendation review.
+result_useful: partial
+reason: weak_evidence
+durable_preference: only_this_project
+notes: The structure was useful, but recommendations need stronger source evidence.
+evolution_action:
+  memory: active
+  eval_case: create
+  promotion: none
+use_feedback:
+  applied_artifact: memory_20260528_business_evidence_threshold
+  use_result: partial
+  follow_up: revise

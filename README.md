@@ -10,6 +10,7 @@ It is a skill suite, not one universal agent runtime. Each skill under `skills/`
 | --- | --- |
 | `agent-builder-lab` | Learn how to build better agents through real agent-building work, evidence, evaluation, and approved lesson promotion. |
 | `agent-scaffold-skill` | Create and improve concrete agent scaffolds with provider adapters, tools, policy gates, memory/state, and eval hooks. |
+| `capability-evolution` | Research and apply use-backed capability evolution in Agents, Skills, and projects: learning artifacts, retrieval, use, evaluation, improvement, forgetting, and promotion. |
 
 ## Boundaries
 
@@ -18,6 +19,7 @@ It is a skill suite, not one universal agent runtime. Each skill under `skills/`
 - Business memories, user preferences, private data, project rules, and domain feedback stay in the concrete business agent project.
 - Reusable meta-lessons may be proposed back into this suite only after review.
 - A scaffold is one part of good agent construction, not the whole body of knowledge.
+- Capability evolution is a reusable mechanism. It does not own every learned fact; it routes learned artifacts to the project, Agent, Skill, or shared layer that will use and maintain them.
 
 ## Layout
 
@@ -25,11 +27,16 @@ It is a skill suite, not one universal agent runtime. Each skill under `skills/`
 agent-building-skills/
 ├── skills/
 │   ├── agent-builder-lab/
-│   └── agent-scaffold-skill/
+│   ├── agent-scaffold-skill/
+│   └── capability-evolution/
 ├── docs/
 ├── tools/
 └── README.md
 ```
+
+Topic research that supports `capability-evolution` lives under
+`docs/topics/capability-evolution/`. The runnable skill lives under
+`skills/capability-evolution/`.
 
 ## Local Install
 
@@ -59,3 +66,8 @@ Then run skill-specific tests when changing scripts or templates:
 python -m pytest skills/agent-builder-lab/tests skills/agent-scaffold-skill/tests
 ```
 
+When changing `capability-evolution`, also run:
+
+```bash
+python skills/capability-evolution/scripts/validate_skill_package.py skills/capability-evolution
+```

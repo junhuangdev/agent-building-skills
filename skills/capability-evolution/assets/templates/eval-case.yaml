@@ -1,0 +1,25 @@
+id: eval_YYYYMMDD_short_slug
+goal: Capability or learning behavior being evaluated.
+input: Task or scenario to run.
+expected_outcome:
+  summary: What final result should be produced.
+expected_use:
+  applied_artifact: Memory, eval, rule, template, or Skill behavior expected to affect the task.
+  use_result: helped # helped | partial | misled | stale | not_applicable | not_used
+expected_trace:
+  must_do:
+    - Required behavior or verification step.
+  must_not_do:
+    - Forbidden behavior.
+scorers:
+  - outcome_completion
+  - use_result
+  - trace_invariant
+  - memory_scope
+  - policy_gate
+  - evidence_quality
+human_feedback:
+  required_for:
+    - taste
+    - business_value
+    - shared_promotion

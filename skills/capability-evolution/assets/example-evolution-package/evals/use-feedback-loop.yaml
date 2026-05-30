@@ -1,0 +1,24 @@
+id: eval_20260528_use_feedback_loop
+goal: Verify that learned content is applied, evaluated, and improved rather than only stored.
+input: A future task retrieves an active memory item and uses it to guide the result.
+expected_outcome:
+  summary: AI reports the task result and the learned artifact's use result.
+expected_use:
+  applied_artifact: active memory item
+  use_result: helped
+expected_trace:
+  must_do:
+    - Identify which learned artifact affected the task.
+    - Record whether the artifact helped, partially helped, misled, was stale, or did not apply.
+    - Choose confirm, narrow, revise, supersede, archive, reject, promote, or none.
+  must_not_do:
+    - Treat retrieval alone as proof of improvement.
+scorers:
+  - outcome_completion
+  - use_result
+  - trace_invariant
+  - memory_scope
+human_feedback:
+  required_for:
+    - business_value
+    - shared_promotion

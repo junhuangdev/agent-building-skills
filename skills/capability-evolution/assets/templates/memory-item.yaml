@@ -1,0 +1,23 @@
+id: memory_YYYYMMDD_short_slug
+evolution_target: software_project # agent_method | agent_business | software_project | workflow_process | skill_improvement | user_preference | runtime_behavior
+storage_sink: current_project # current_project | owning_agent_repo | owning_skill_package | shared_skill_candidate | user_memory | runtime_candidate
+scope: project # project | user | shared_candidate | runtime
+status: watch # watch | active | promote | archive | rejected | superseded
+source: task_trace # user_feedback | task_trace | eval_result | repeated_failure | external_reference
+context: Short task or situation that produced this memory.
+content: Reusable lesson stated as an action-oriented rule.
+future_use: When future AI should retrieve and use this memory.
+use_history:
+  - applied_artifact: This memory item or linked rule/template.
+    task_context: Where it was used.
+    use_result: not_used # helped | partial | misled | stale | not_applicable | not_used
+    evidence: What proved the use result.
+    follow_up: none # confirm | narrow | revise | supersede | archive | reject | promote | none
+last_use_result: not_used # helped | partial | misled | stale | not_applicable | not_used
+evidence:
+  - Evidence item, trace, feedback, eval, or repeated pattern.
+counterexamples:
+  - Where this memory must not apply.
+risk: What goes wrong if this memory is reused incorrectly.
+last_confirmed: YYYY-MM-DD
+review_trigger: conflicting_evidence # time_based | conflicting_evidence | failed_reuse | user_feedback

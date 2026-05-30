@@ -1,0 +1,23 @@
+id: memory_20260528_agent_method_delayed_retrieval_eval
+evolution_target: agent_method
+storage_sink: shared_skill_candidate
+scope: shared_candidate
+status: watch
+source: external_reference
+context: Research on human learning evaluation.
+content: Use delayed retrieval as stronger evidence than immediate familiarity when evaluating durable knowledge.
+future_use: When designing Agent or Skill eval cases for durable knowledge retention.
+use_history:
+  - applied_artifact: memory_20260528_agent_method_delayed_retrieval_eval
+    task_context: Initial eval design example.
+    use_result: not_used
+    evidence: Candidate has not yet been validated in a later task.
+    follow_up: none
+last_use_result: not_used
+evidence:
+  - Learning-science references identify retrieval practice as a retention signal.
+counterexamples:
+  - Do not use as the only measure for business usefulness or policy compliance.
+risk: Over-valuing memory recall while ignoring task outcome or user value.
+last_confirmed: 2026-05-28
+review_trigger: conflicting_evidence

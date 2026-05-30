@@ -7,7 +7,7 @@ The suite has one durable purpose: improve how agents are built.
 - Agent-building principles.
 - Scaffold templates and provider/runtime boundaries.
 - Evaluation methods and reusable eval templates.
-- Memory, learning, forgetting, risk, policy, workflow, and collaboration patterns for agents.
+- Memory, learning, capability evolution, forgetting, risk, policy, workflow, and collaboration patterns for agents.
 - Tools that install, validate, sync, or package suite-managed skills.
 - Meta-lessons extracted from real agent-building work after review.
 
@@ -25,10 +25,18 @@ The suite has one durable purpose: improve how agents are built.
 | --- | --- | --- |
 | Agent-building knowledge | This suite | Yes |
 | Scaffold structure | `agent-scaffold-skill` | Yes |
-| Agent learning mechanism | `agent-builder-lab` and scaffold templates | Yes |
+| Agent evolution mechanism | `capability-evolution` | Yes |
+| Agent-building lesson harvest | `agent-builder-lab` | Yes |
 | Business learning content | Concrete business agent project | No |
 | Runtime internals | Codex, OpenCode, Hermes, OpenClaw, or custom runtime | No |
 | Cross-project meta-lessons | This suite after review | Yes |
 
 The suite teaches generated agents how to learn. It does not own what those agents learn about their business domain.
 
+## Skill Boundaries
+
+| Skill | Owns | Does Not Own |
+| --- | --- | --- |
+| `agent-scaffold-skill` | Agent project shape, provider adapters, tool runtime, policy gates, memory/state surfaces, eval hooks | The capability-evolution research loop itself |
+| `capability-evolution` | Learning artifacts, use records, retrieval/use/eval/improve loops, memory lifecycle, promotion/archive decisions | Generic Agent scaffolding or business-domain knowledge |
+| `agent-builder-lab` | Build journals, reusable lesson harvest, promotion decisions across suite skills | Runtime implementation or direct ownership of generated project knowledge |

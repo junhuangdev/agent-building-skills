@@ -1,0 +1,23 @@
+id: memory_20260528_learning_storage_routing
+evolution_target: skill_improvement
+storage_sink: owning_skill_package
+scope: shared_candidate
+status: watch
+source: user_feedback
+context: User clarified that the capability-evolution ability must serve Skills, Agents, and projects, and may self-reference.
+content: Capability-evolution artifacts must separate the kind of learning from the owner that stores it, then record whether reuse improved later work.
+future_use: When updating capability-evolution templates, examples, or checker rules.
+use_history:
+  - applied_artifact: memory_20260528_learning_storage_routing
+    task_context: Rename from learning to capability evolution.
+    use_result: helped
+    evidence: The routing fields guided the rename without mixing Skill, Agent, and project knowledge.
+    follow_up: confirm
+last_use_result: helped
+evidence:
+  - User supplied cross-context scenarios that require routing beyond Agent-only learning.
+counterexamples:
+  - Do not store private project content inside the shared capability-evolution skill.
+risk: Without routing and use-result fields, shared evolution may pollute owners and over-generalize local knowledge.
+last_confirmed: 2026-05-28
+review_trigger: failed_reuse
