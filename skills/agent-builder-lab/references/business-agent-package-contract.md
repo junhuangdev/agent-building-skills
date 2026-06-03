@@ -48,6 +48,7 @@ python ~/.codex/skills/agent-builder-lab/scripts/check_business_agent_package.py
 | `memory_policy` | yes | 业务记忆归属和提升规则 |
 | `eval_policy` | yes | eval 场景和阻断规则 |
 | `delivery_contract` | yes | 交付格式 |
+| `interaction_surfaces` | recommended | AI 对话、工作台、固定应用流程的职责分工 |
 
 语义规则：
 
@@ -55,6 +56,8 @@ python ~/.codex/skills/agent-builder-lab/scripts/check_business_agent_package.py
 - `allowed_actions` 里的 action 必须在 `actions/` 中存在。
 - 每个 external、irreversible、money、publish、delete 类型风险必须有 human gate。
 - runtime target 必须有对应 adapter。
+
+对 `composite_business_agent`，`interaction_surfaces` 默认应把探索性 AI 工作放在宿主对话，把工作台定义为结构化展示、提示、模板、artifact、evidence、human gate 和 handoff package 的入口。只有经过真实 run 证明稳定的动作，才提升为固定应用流程。
 
 ## actions/*.yaml
 
@@ -177,6 +180,7 @@ Next Action
 | eval 覆盖 boundary | 防止只看结果不看风险 |
 | memory 归项目所有 | 防止业务知识丢在宿主上下文 |
 | adapter 明确 unsupported | 防止误用 runtime 黑盒能力 |
+| workbench 偏展示和协作入口 | 防止过早把探索性 AI 工作固化进 UI workflow |
 
 ## 当前自动检查范围
 

@@ -23,6 +23,13 @@ human_gates:
 runtime_targets:
   - runtime: codex
     adapter: runtime-adapters/codex.yaml
+interaction_surfaces:
+  ai_conversation:
+    default_role: Explore, reason, use tools, and produce candidate artifacts.
+  workbench:
+    default_role: Display status, artifacts, evidence, human gates, prompts, templates, and handoff packages.
+  fixed_app_workflows:
+    default_role: Run only stable, auditable actions with clear inputs, outputs, evidence, and approval rules.
 memory_policy:
   business_memory_path: memory/business-memory.yaml
   feedback_path: memory/feedback-log.yaml

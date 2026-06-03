@@ -32,6 +32,15 @@ class BusinessAgentTemplateTests(unittest.TestCase):
 
         self.assertTrue(result.ok, "\n".join(result.issues))
 
+    def test_business_agent_template_includes_interaction_surfaces(self):
+        template_root = ROOT / "assets" / "templates" / "business-agent"
+        agent_yaml = (template_root / "agent.yaml").read_text(encoding="utf-8")
+
+        self.assertIn("interaction_surfaces:", agent_yaml)
+        self.assertIn("ai_conversation:", agent_yaml)
+        self.assertIn("workbench:", agent_yaml)
+        self.assertIn("fixed_app_workflows:", agent_yaml)
+
 
 if __name__ == "__main__":
     unittest.main()

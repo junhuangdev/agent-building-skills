@@ -20,6 +20,7 @@
 | 它创造什么可观察业务价值 | 停下来定义 business_value |
 | 它能做哪些动作 | 先只定义 3 到 5 个核心 actions |
 | 哪些动作必须人审 | 先定义 risk_class 和 human_gates |
+| 工作台承载什么 | 默认只承载展示、提示、模板、产物和人审入口 |
 
 不要用“提高效率”“辅助分析”作为最终答案。要写成可验收的业务结果，例如“把候选视频整理成可人工采纳的候选池记录”。
 
@@ -64,6 +65,18 @@ cp -R ~/.codex/skills/agent-builder-lab/assets/templates/business-agent ./busine
 | `runtime_targets` | 第一版通常先放 `codex` |
 
 如果 `mission` 和 `business_value` 写不清楚，不要继续写 actions。
+
+### 1.5 定义 Interaction Surfaces
+
+对混合型或 Composite Business Agent，先在 `agent.yaml` 写清楚三个交互表面：
+
+| 表面 | 第一版默认 |
+| --- | --- |
+| AI 对话 / 宿主 Agent | 探索、判断、综合、调用工具、生成候选产物 |
+| 工作台 | 展示状态、产物、证据、人工闸门、可复制 prompt、固定模板、导入导出包 |
+| 固定应用流程 | 只承载已稳定、可审计、输入输出清楚的动作 |
+
+第一版不要把还在变化的 AI 协作过程做成复杂 UI workflow。先让 AI 在对话里完成高变动工作，把结果、提示、模板、审核点和 handoff package 回写到工作台。某个动作经过真实 run 证明稳定后，再提升为工作台按钮或固定流程。
 
 ### 2. 定义 3 到 5 个 Actions
 
@@ -205,6 +218,7 @@ one business goal
 | Eval | 至少 1 个 smoke scenario |
 | Runtime | 至少 1 个 adapter 明确支持和不支持什么 |
 | Delivery | 有固定交付格式 |
+| Workbench | 展示、验收、提示、模板和交接清楚，不过早承载探索性 AI 流程 |
 
 ## Stop Conditions
 
@@ -216,6 +230,7 @@ one business goal
 - risky action 没有人审。
 - eval 只看最终回答，不看证据、边界和返工。
 - 业务状态只存在聊天里，没有项目自有文件或系统记录。
+- 工作台试图实现尚未稳定的 AI 推理或探索流程。
 
 ## 使用原则
 

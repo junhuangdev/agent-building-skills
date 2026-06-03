@@ -62,6 +62,20 @@ Host Agent
 
 第一版落地时，先按 `business-agent-build-procedure.md` 创建 package，并用 `business-agent-package-contract.md` 检查最小机器契约。
 
+## 工作台默认形态
+
+混合型或 Composite Business Agent 的工作台默认应先做成“结构化展示和协作入口”，而不是主要执行引擎。
+
+| 表面 | 默认职责 |
+| --- | --- |
+| AI 对话 / 宿主 Agent | 探索、判断、综合、调用工具、生成候选产物 |
+| 工作台 | 展示状态、产物、证据、人工闸门、提示词、模板和交接包 |
+| 固定应用流程 | 承载已稳定、可审计、需要产品直接拥有副作用的动作 |
+
+第一版不要把还在探索的 AI 协作流程硬塞进 UI workflow。更稳的做法是：AI 在对话里完成高变动工作，工作台保存和呈现对话产出的 artifacts、下一步、审核点、可复制 prompt、固定模板、导入导出包，以及少量已经稳定的按钮动作。
+
+只有当某个动作重复出现、输入输出稳定、风险和 evidence chain 都清楚时，才把它从“对话协作”提升为工作台内的固定流程或按钮。
+
 ## 记忆和学习也是分层能力
 
 Composite Business Agent 不应把业务记忆完全交给宿主 runtime。Runtime 可以帮助执行，但业务项目必须拥有自己的业务记忆、反馈、评估 baseline 和学习闭环。
@@ -186,7 +200,8 @@ score:
 4. 用 CLI、API、数据模型和报告把结果结构化。
 5. 用人类验收守住风险、品味和业务判断。
 6. 用 scenario、rubric 和外部协作 trace 评估整体效果。
-7. 失败先留在项目内修正，跨项目价值再提升到共享 skill 或 eval 模板。
+7. 默认让工作台展示 artifacts、evidence、gates、prompts、templates 和 handoff packages；不要让工作台过早承载仍在探索的 AI 推理流程。
+8. 失败先留在项目内修正，跨项目价值再提升到共享 skill 或 eval 模板。
 
 ## 适用判断
 
