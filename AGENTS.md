@@ -14,6 +14,7 @@ This repository manages a suite of Codex skills for building better AI agents.
 - `skills/agent-builder-lab/` is the source of the `agent-builder-lab` skill.
 - `skills/agent-scaffold-skill/` is the source of the `agent-scaffold-skill` skill.
 - `skills/capability-evolution/` is the source of the `capability-evolution` skill.
+- `skills/project-start-routing/` is the source of the `project-start-routing` skill.
 - `tools/` contains suite-level install, sync, and validation utilities.
 - `docs/` contains suite-level governance and architecture notes.
 

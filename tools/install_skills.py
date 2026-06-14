@@ -17,12 +17,35 @@ def iter_skill_roots(suite_root: Path) -> list[Path]:
     return sorted(path for path in skills_dir.iterdir() if (path / "SKILL.md").exists())
 
 
+def get_skill_root(suite_root: Path, skill_name: str) -> Path:
+    skill_root = suite_root / "skills" / skill_name
+    if not (skill_root / "SKILL.md").exists():
+        raise SystemExit(f"Unknown suite-managed skill: {skill_name}")
+    return skill_root
+
+
 def install_all(skills_root: Path, replace_existing: bool = False) -> list[tuple[str, Path]]:
     skills_root = skills_root.expanduser().resolve()
     skills_root.mkdir(parents=True, exist_ok=True)
     installed: list[tuple[str, Path]] = []
 
     for skill_root in iter_skill_roots(SUITE_ROOT):
+        target = skills_root / skill_root.name
+        install_one(skill_root, target, replace_existing=replace_existing)
+        installed.append((skill_root.name, target))
+
+    return installed
+
+
+def install_selected(
+    skill_names: list[str], skills_root: Path, replace_existing: bool = False
+) -> list[tuple[str, Path]]:
+    skills_root = skills_root.expanduser().resolve()
+    skills_root.mkdir(parents=True, exist_ok=True)
+    installed: list[tuple[str, Path]] = []
+
+    for skill_name in skill_names:
+        skill_root = get_skill_root(SUITE_ROOT, skill_name)
         target = skills_root / skill_root.name
         install_one(skill_root, target, replace_existing=replace_existing)
         installed.append((skill_root.name, target))
@@ -62,8 +85,17 @@ def _backup_path(target: Path) -> Path:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Install all suite-managed skills into a Codex skills directory.")
+    parser = argparse.ArgumentParser(
+        description="Install suite-managed skills into a Codex skills directory.",
+        allow_abbrev=False,
+    )
     parser.add_argument("--skills-root", default=str(DEFAULT_SKILLS_ROOT), help="Codex skills directory.")
+    parser.add_argument(
+        "--skill",
+        action="append",
+        dest="skills",
+        help="Install only this skill. May be passed more than once.",
+    )
     parser.add_argument(
         "--replace-existing",
         action="store_true",
@@ -71,7 +103,10 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    installed = install_all(Path(args.skills_root), replace_existing=args.replace_existing)
+    if args.skills:
+        installed = install_selected(args.skills, Path(args.skills_root), replace_existing=args.replace_existing)
+    else:
+        installed = install_all(Path(args.skills_root), replace_existing=args.replace_existing)
     for name, target in installed:
         print(f"Installed {name} -> {target.resolve()}")
     return 0

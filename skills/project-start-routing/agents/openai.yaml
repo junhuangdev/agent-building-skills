@@ -1,0 +1,8 @@
+interface:
+  display_name: "Project Start Routing"
+  short_description: "Choose controlled stacks for new local projects"
+  brand_color: "#0F766E"
+  default_prompt: "Use $project-start-routing to choose the right stack before starting my project."
+
+policy:
+  allow_implicit_invocation: true
